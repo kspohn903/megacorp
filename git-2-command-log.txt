@@ -1,0 +1,452 @@
+kspohn@kspohn-HP-Laptop:~$ cd ./boot-dev-projects/git-2/
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2$ cd ./megacorp/
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ cat customers/
+all.csv           unstructured.txt  
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ cat customers/all.csv 
+first_name,last_name,company,title
+karson,yummy,intercooler,ceo
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ echo "Boot.dev\nTheStartup" >> orgs/partners.txt
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ cat orgs/partners.txt 
+partner list
+Boot.dev\nTheStartup
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ vim orgs/partners.txt 
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git add .
+git commit -m "C: update customers and partners"
+[add_customers 50cacbb] C: update customers and partners
+ 2 files changed, 3 insertions(+)
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ nano customers/all.csv
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git add customers/all.csv
+git commit -m "D: add jayson to customers"
+[main 6f5e8af] D: add jayson to customers
+ 1 file changed, 1 insertion(+)
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run 92ea654a-3112-4649-a46e-e06bb38ec709 -s
+╭────────────────────────────────────────────────────────╮
+│ ✓  Running: git log --oneline --graph --all --decorate │
+╰┬───────────────────────────────────────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - 'A:'                         
+ │       - 'B:'                         
+ │       - 'D:'                         
+
+ > Command exit code: 0
+ > Command stdout:
+
+* 6f5e8af (HEAD -> main) D: add jayson to customers
+| * 50cacbb (add_customers) C: update customers and partners
+|/  
+* dcddab3 B: recovery
+| * 6342493 (origin/add_contrib) [06-08-2026 16:11] [INFO]: [add_contrib branch added, kspohn.txt added]
+|/  
+* 0d16f95 (origin/main, origin/HEAD) A: The Founding of MegaCorp and the End of Art
+╭────────────────────────╮
+│ ✓  Running: git branch │
+╰┬───────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - '* main'                     
+ │       - 'add_customers'              
+
+ > Command exit code: 0
+ > Command stdout:
+
+  add_customers
+* main
+
+
+All tests passed! 🎉
+
+Gained +323 XP
++120 XP (Lesson)
++  3 XP (3%   Daily Streak)
++200 XP (Daily Bonus)
+
+Return to your browser to continue with the next lesson.
+
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run 92ea654a-3112-4649-a46e-e06bb38ec709 -s
+╭────────────────────────────────────────────────────────╮
+│ ✓  Running: git log --oneline --graph --all --decorate │
+╰┬───────────────────────────────────────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - 'A:'                         
+ │       - 'B:'                         
+ │       - 'D:'                         
+
+ > Command exit code: 0
+ > Command stdout:
+
+* 6f5e8af (HEAD -> main) D: add jayson to customers
+| * 50cacbb (add_customers) C: update customers and partners
+|/  
+* dcddab3 B: recovery
+| * 6342493 (origin/add_contrib) [06-08-2026 16:11] [INFO]: [add_contrib branch added, kspohn.txt added]
+|/  
+* 0d16f95 (origin/main, origin/HEAD) A: The Founding of MegaCorp and the End of Art
+╭────────────────────────╮
+│ ✓  Running: git branch │
+╰┬───────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - '* main'                     
+ │       - 'add_customers'              
+
+ > Command exit code: 0
+ > Command stdout:
+
+  add_customers
+* main
+
+
+All tests passed! 🎉
+
+Gained +0 XP
+
+Return to your browser to continue with the next lesson.
+
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git checkout add_customers
+Switched to branch 'add_customers'
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git merge main
+Auto-merging customers/all.csv
+CONFLICT (content): Merge conflict in customers/all.csv
+Automatic merge failed; fix conflicts and then commit the result.
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git status
+On branch add_customers
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   customers/all.csv
+
+no changes added to commit (use "git add" and/or "git commit -a")
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run 9973d6bd-37d9-49a2-8529-ab59adec9d1d -s
+╭────────────────────────╮
+│ ✓  Running: git status │
+╰┬───────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - 'You have unmerged paths.'   
+
+ > Command exit code: 0
+ > Command stdout:
+
+On branch add_customers
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+    both modified:   customers/all.csv
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+All tests passed! 🎉
+
+Gained +123 XP
++120 XP (Lesson)
++  3 XP (3%   Daily Streak)
+
+Return to your browser to continue with the next lesson.
+
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ nano customers/all.csv
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ cat customers/all.csv
+first_name,last_name,company,title
+karson,yummy,intercooler,ceo
+jayson,gross,htmz,contributor
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run e37ed7bf-cddb-4092-a617-220ab0e1fae6 -s
+╭───────────────────────────────────╮
+│ ✓  Running: cat customers/all.csv │
+╰┬──────────────────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:    
+ │       - 'karson,yummy,intercooler,ceo'   
+ │       - 'jayson,gross,htmz,contributor'  
+ ├─  ✓  Expect stdout to contain none of:
+ │       - '<<<<<<<'                     
+ │       - '>>>>>>>'                     
+ │       - '======='                     
+
+ > Command exit code: 0
+ > Command stdout:
+
+first_name,last_name,company,title
+karson,yummy,intercooler,ceo
+jayson,gross,htmz,contributor
+
+
+All tests passed! 🎉
+
+Gained +123 XP
++120 XP (Lesson)
++  3 XP (3%   Daily Streak)
+
+Return to your browser to continue with the next lesson.
+
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git add customers/all.csv
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git commit -m "E: resolved conflict with stupid Greg's customer"
+[add_customers e93328d] E: resolved conflict with stupid Greg's customer
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git log --oneline --graph
+*   e93328d (HEAD -> add_customers) E: resolved conflict with stupid Greg's customer
+|\  
+| * 6f5e8af (main) D: add jayson to customers
+* | 50cacbb C: update customers and partners
+|/  
+* dcddab3 B: recovery
+* 0d16f95 (origin/main, origin/HEAD) A: The Founding of MegaCorp and the End of Art
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run 9973d6bd-37d9-49a2-8529-ab59adec9d1d -s
+╭────────────────────────╮
+│ X  Running: git status │
+╰┬───────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  X  Expect stdout to contain all of:
+ │       - 'You have unmerged paths.'   
+
+ > Command exit code: 0
+ > Command stdout:
+
+On branch add_customers
+nothing to commit, working tree clean
+
+
+Tests failed! ❌                                   
+                                   
+Failed Command: Running: git status              
+              
+Failed Step: 1                                                          
+Error: expected stdout to contain You have unmerged paths.
+
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run 9973d6bd-37d9-49a2-8529-ab59adec9d1d -s
+╭────────────────────────╮
+│ X  Running: git status │
+╰┬───────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  X  Expect stdout to contain all of:
+ │       - 'You have unmerged paths.'   
+
+ > Command exit code: 0
+ > Command stdout:
+
+On branch add_customers
+nothing to commit, working tree clean
+
+
+Tests failed! ❌                                   
+                                   
+Failed Command: Running: git status              
+              
+Failed Step: 1                                                          
+Error: expected stdout to contain You have unmerged paths.
+
+                                ^C
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run fbdb042c-4652-4413-b0e9-0083976eb8c4 -s
+╭──────────────────────────────────────────╮
+│ ✓  Running: git --no-pager log --oneline │
+╰┬─────────────────────────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - 'A:'                         
+ │       - 'B:'                         
+ │       - 'C:'                         
+ │       - 'D:'                         
+ │       - 'E:'                         
+
+ > Command exit code: 0
+ > Command stdout:
+
+e93328d E: resolved conflict with stupid Greg's customer
+6f5e8af D: add jayson to customers
+50cacbb C: update customers and partners
+dcddab3 B: recovery
+0d16f95 A: The Founding of MegaCorp and the End of Art
+
+
+All tests passed! 🎉
+
+Gained +123 XP
++120 XP (Lesson)
++  3 XP (3%   Daily Streak)
+
+Return to your browser to continue with the next lesson.
+
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git log
+commit e93328dc66badac930d4dd589029600665c18b4a (HEAD -> add_customers)
+Merge: 50cacbb 6f5e8af
+Author: kspohn903 <kspohn903@gmail.com>
+Date:   Tue Jun 9 10:41:01 2026 -0500
+
+    E: resolved conflict with stupid Greg's customer
+
+commit 6f5e8afa86abb3b0c9addd5f391f3f6296f65a74 (main)
+Author: kspohn903 <kspohn903@gmail.com>
+Date:   Tue Jun 9 10:36:49 2026 -0500
+
+    D: add jayson to customers
+
+commit 50cacbb6df5bb0082d2a39d126434ebcd8229e36
+Author: kspohn903 <kspohn903@gmail.com>
+Date:   Tue Jun 9 10:36:07 2026 -0500
+
+    C: update customers and partners
+
+commit dcddab35012e4ec767c3edd3d321b889669e174f
+Author: kspohn903 <kspohn903@gmail.com>
+Date:   Tue Jun 9 10:28:29 2026 -0500
+
+    B: recovery
+
+commit 0d16f954dfda53be7e875da6a23698c428cf68af (origin/main, origin/HEAD)
+Author: wagslane <lane.c.wagner@gmail.com>
+Date:   Wed Jun 26 11:22:51 2024 -0600
+
+    A: The Founding of MegaCorp and the End of Art
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git reset --hard 50cacbb
+HEAD is now at 50cacbb C: update customers and partners
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git log --oneline
+50cacbb (HEAD -> add_customers) C: update customers and partners
+dcddab3 B: recovery
+0d16f95 (origin/main, origin/HEAD) A: The Founding of MegaCorp and the End of Art
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run 4f043687-ce97-4c5e-9e28-f6d7c7a8df4b -s
+╭──────────────────────────────────────────╮
+│ ✓  Running: git --no-pager log --oneline │
+╰┬─────────────────────────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - 'A:'                         
+ │       - 'B:'                         
+ │       - 'C:'                         
+ ├─  ✓  Expect stdout to contain none of:
+ │       - 'D:'                          
+ │       - 'E:'                          
+
+ > Command exit code: 0
+ > Command stdout:
+
+50cacbb C: update customers and partners
+dcddab3 B: recovery
+0d16f95 A: The Founding of MegaCorp and the End of Art
+╭────────────────────────╮
+│ ✓  Running: git branch │
+╰┬───────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - '* add_customers'            
+ │       - 'main'                       
+
+ > Command exit code: 0
+ > Command stdout:
+
+* add_customers
+  main
+
+
+All tests passed! 🎉
+
+Gained +123 XP
++120 XP (Lesson)
++  3 XP (3%   Daily Streak)
+
+Return to your browser to continue with the next lesson.
+
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ Back to Main
+Let's fix our hastiness by doing a hard reset of the merge commit, this will allow us to take a different approach to resolving the conflict.
+
+Luckily, we haven't borked main yet, we just need to fix our add_customers branch.
+
+Assignment
+Try merging main into add_customers again.
+This time, resolve the conflict by keeping only the changes from main and discarding your changes. We don't want to throw out all the changes from add_customers, just the line that conflicts with main. Remember, add_customers also contains the new orgs/partners.txt file that we want to keep.
+After resolving conflicts, add and commit again with a message starting with E:
+For example: E: fine, Greg can have this one.
+Run and submit the CLI tests from the root of the repo.
+
+
+
+
+
+^C
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git merge main
+Auto-merging customers/all.csv
+CONFLICT (content): Merge conflict in customers/all.csv
+Automatic merge failed; fix conflicts and then commit the result.
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ nano customers/all.csv
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git add customers/all.csv
+git commit -m "E: fine, Greg can have this one"
+[add_customers 34b5dc2] E: fine, Greg can have this one
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ bootdev run 9d1f10a1-8810-437e-b828-6b60e2dd83da -s
+╭──────────────────────────────────────────╮
+│ ✓  Running: git --no-pager log --oneline │
+╰┬─────────────────────────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - 'A:'                         
+ │       - 'B:'                         
+ │       - 'C:'                         
+ │       - 'D:'                         
+ │       - 'E:'                         
+
+ > Command exit code: 0
+ > Command stdout:
+
+34b5dc2 E: fine, Greg can have this one
+6f5e8af D: add jayson to customers
+50cacbb C: update customers and partners
+dcddab3 B: recovery
+0d16f95 A: The Founding of MegaCorp and the End of Art
+╭───────────────────────────────────╮
+│ ✓  Running: cat orgs/partners.txt │
+╰┬──────────────────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:
+ │       - 'Boot.dev'                   
+ │       - 'TheStartup'                 
+
+ > Command exit code: 0
+ > Command stdout:
+
+partner list
+Boot.dev
+TheStartup
+╭───────────────────────────────────╮
+│ ✓  Running: cat customers/all.csv │
+╰┬──────────────────────────────────╯
+ ├─  ✓  Expect exit code 0
+ ├─  ✓  Expect stdout to contain all of:    
+ │       - 'jayson,gross,htmz,contributor'  
+ ├─  ✓  Expect stdout to contain none of:  
+ │       - 'karson,yummy,intercooler,ceo'  
+
+ > Command exit code: 0
+ > Command stdout:
+
+first_name,last_name,company,title
+jayson,gross,htmz,contributor
+
+
+All tests passed! 🎉
+
+Gained +185 XP
++180 XP (Lesson)
++  5 XP (3%   Daily Streak)
+
+Return to your browser to continue with the next lesson.
+
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ git merge add_customers
+Updating 6f5e8af..34b5dc2
+Fast-forward
+ customers/all.csv | 1 +
+ orgs/partners.txt | 2 ++
+ 2 files changed, 3 insertions(+)
+kspohn@kspohn-HP-Laptop:~/boot-dev-projects/git-2/megacorp$ 
+
